@@ -9,6 +9,16 @@ export default class App extends React.Component {
     };
 
   }
+  componentDidMount() {
+    this.getProducts();
+  }
+  getProducts() {
+    fetch('/api/products.php')
+      .then(promiseObj => promiseObj.json())
+      .then(successObj => {
+        this.setState({ products: successObj });
+      });
+  }
   render() {
     return (
       <Header text='Wicked Sales' />
