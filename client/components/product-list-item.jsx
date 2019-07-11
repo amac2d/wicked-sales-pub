@@ -1,7 +1,7 @@
 import React from 'react';
 
 class ProductListItem extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     console.log('this.props.element:', this.props.element);
   }
   render() {
