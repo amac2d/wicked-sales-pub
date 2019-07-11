@@ -1,6 +1,9 @@
 import React from 'react';
 
 class ProductListItem extends React.Component {
+  componentDidMount(){
+    console.log('this.props.element:', this.props.element);
+  }
   render() {
     const img = this.props.element.image;
     const imgStyle = {
