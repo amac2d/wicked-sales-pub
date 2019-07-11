@@ -17,10 +17,10 @@ class ProductListItem extends React.Component {
           <div className='productImage card-img-top' style={imgStyle}></div>
           <div className='productCardBody card-body'>
             <p className='productName card-title'>
-              {this.props.element.name}
+              <strong>{this.props.element.name}</strong>
             </p>
             <p className='productPrice card-text'>
-              {this.props.element.price}
+              ${(this.props.element.price / 100).toFixed(2)}
             </p>
             <p className='productDescription card-text'>
               {this.props.element.shortDescription}
