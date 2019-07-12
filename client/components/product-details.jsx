@@ -13,7 +13,7 @@ class ProductDetails extends React.Component {
       .then(promiseObj => promiseObj.json())
       .then(successObj => {
         this.setState({ product: successObj });
-        // console.log('successObj/this.state.product:', this.props.params.id);
+        console.log('successObj/this.state.product:', this.props.params.id);
       });
   }
   sendBackToCatalog() {

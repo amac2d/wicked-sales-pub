@@ -28,10 +28,10 @@ class ProductListItem extends React.Component {
     };
     return (
       <div className='col-md-4'>
-        <div className='productCard card mb-4 shadow-sm'>
+        <div className='productCard card mb-4 shadow-sm' onClick={this.sendViewStateObj}>
           <div className='productImage card-img-top' style={imgStyle}></div>
           <div className='productCardBody card-body'>
-            <p className='productName card-title' onClick={this.sendViewStateObj}>
+            <p className='productName card-title'>
               <strong>{this.props.element.name}</strong>
             </p>
             <p className='productPrice card-text'>
