@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummaryItem from './cart-summary-item'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -58,14 +59,15 @@ export default class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
   render() {
-    if (this.state.view.name === 'catalog') {
+    if (this.state.view.name === 'catalog') { //take out the && portion after you're finsihed with cart summary item  && this.state.products.length !== 0
       return (
         <div>
           <Header text='Wicked Sales' cartItemCount={this.state.cart.length} />
           <ProductList click={this.setView} products={this.state.products} />
+          {/* <CartSummaryItem product={this.state.products[1]}/> */}
         </div>
       );
-    } else {
+    } else if (this.state.view.name === 'details'){
       return (
         <div>
           <Header text='Wicked Sales' cartItemCount={this.state.cart.length} />
