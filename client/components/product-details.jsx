@@ -7,6 +7,7 @@ class ProductDetails extends React.Component {
       product: null
     };
     this.sendBackToCatalog = this.sendBackToCatalog.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
   componentDidMount() {
     fetch('api/products.php?id=' + this.props.params.id)
@@ -23,6 +24,10 @@ class ProductDetails extends React.Component {
     };
     this.props.click(setViewToCatalogObj.name, setViewToCatalogObj.params);
   }
+  addToCart() {
+    const product = this.state.product;
+    this.props.addToCart(product);
+  }
   render() {
     if (this.state.product) {
       const product = this.state.product;
@@ -31,7 +36,7 @@ class ProductDetails extends React.Component {
         <div className='main col m-4'>
 
           <div className='row col mb-4'>
-            <button onClick={this.sendBackToCatalog}>Back to catalog button</button>
+            <div onClick={this.sendBackToCatalog}>&#60; Back to catalog</div>
           </div>
 
           <div className='row'>
@@ -43,6 +48,7 @@ class ProductDetails extends React.Component {
               </p>
               <p>${(product.price / 100).toFixed(2)}</p>
               <p>{product.shortDescription}</p>
+              <button onClick={this.addToCart}>Add to Cart</button>
 
             </div>
 
