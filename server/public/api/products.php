@@ -32,17 +32,21 @@ if (!$result) {
   exit();
 }
 
-if(mysqli_num_rows($result) === 0 ){
-  throw new Exception( 'Invalid ID: ' . $id );
+if (mysqli_num_rows($result) === 0) {
+  throw new Exception('Invalid ID: ' . $id);
   exit();
 };
 
-$output = [];
+if (!empty($whereClause)) {
+  $json_output = json_encode(mysqli_fetch_assoc($result));
+} else {
+  $output = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
-  array_push($output, $row);
+  while ($row = mysqli_fetch_assoc($result)) {
+    array_push($output, $row);
+  }
+
+  $json_output = json_encode($output);
 }
-
-$json_output = json_encode($output);
 
 print($json_output);
