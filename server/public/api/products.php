@@ -32,6 +32,11 @@ if (!$result) {
   exit();
 }
 
+if(mysqli_num_rows($result) === 0 ){
+  throw new Exception( 'Invalid ID: ' . $id );
+  exit();
+};
+
 $output = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
