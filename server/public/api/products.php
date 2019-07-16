@@ -6,13 +6,19 @@ require_once('db_connection.php');
 set_exception_handler( 'error_handler' );
 startup();
 
+if( !empty( $_GET["id"] ) ) {
+  $whereClause = " WHERE `id` = " . $_GET["id"]; 
+} else {
+  $whereClause = "";
+}
+
 if(!$conn) {
   throw new Exception('exception: ' . mysqli_connect_error());
   exit();
 }
 
 // $output = file_get_contents('dummy-products-list.json'); //am i suppose to delete this?
-$query = "SELECT * FROM `products`";
+$query = "SELECT * FROM `products`" . $whereClause;
 
 // print( $output ); //delete if needed
 $result = mysqli_query( $conn, $query );
