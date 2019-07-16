@@ -5,9 +5,13 @@ function error_handler( $error ) {
     'success'=> false,
     'error'=> $error->getMessage()
   ];
-  $json_output = json_encode( $output );
+  $json_error_output = json_encode( $output );
 
-  print( $json_output );
+  print( $json_error_output );
+}
+
+function startup() {
+  header("Content-type:application/json");
 }
 
 ?>
