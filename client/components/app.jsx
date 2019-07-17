@@ -11,13 +11,14 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'checkout',
+        name: 'catalog',
         params: {}
       },
       cart: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
   componentDidMount() {
     this.getProducts();
@@ -60,7 +61,6 @@ export default class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
   placeOrder(orderObj) {
-    // orderObj is going to be an object {name: , creditCard: , shippingAddress: }
     fetch('/api/orders.php', {
       method: 'POST',
       body: JSON.stringify(orderObj),
@@ -106,7 +106,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header text='Wicked Sales' cartItemCount={this.state.cart.length} click={this.setView} />
-          <CheckoutForm />
+          <CheckoutForm onSubmit={this.placeOrder} click={this.setView} cartItems={this.state.cart} />
         </div>
       );
     }
