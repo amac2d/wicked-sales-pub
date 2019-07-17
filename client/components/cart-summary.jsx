@@ -2,9 +2,36 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 class CartSummary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.sendBackToCatalog = this.sendBackToCatalog.bind(this);
+  }
+  sendBackToCatalog() {
+    const setViewToCatalogObj = {
+      name: 'catalog',
+      params: {}
+    };
+    this.props.click(setViewToCatalogObj.name, setViewToCatalogObj.params);
+  }
   render() {
-    if (this.props.cartItems === 0) {
-      return null;
+    if (this.props.cartItems.length === 0) {
+      return (
+        <div className='cartSummaryContainer main'>
+          <div className='col mx-auto'>
+            <div className='row col mb-4'>
+              <div onClick={this.sendBackToCatalog}>&#60; Back to catalog</div>
+            </div>
+            <br />
+            <div>
+              <h3>My Cart</h3>
+            </div>
+            <div>
+              Your Cart is Empty
+            </div>
+            <div>Item Total $0.00</div>
+          </div>
+        </div>
+      );
     } else {
       const cartItemPrice = this.props.cartItems;
       let priceTotal = 0;
@@ -14,8 +41,8 @@ class CartSummary extends React.Component {
       return (
         <div className='cartSummaryContainer main'>
           <div className='col mx-auto'>
-            <div>
-              <button>Back to catalog Button</button>
+            <div className='row col mb-4'>
+              <div onClick={this.sendBackToCatalog}>&#60; Back to catalog</div>
             </div>
             <br />
             <div>
