@@ -36,7 +36,7 @@ class CartSummary extends React.Component {
       const cartItemPrice = this.props.cartItems;
       let priceTotal = 0;
       for (let indexPrice = 0; indexPrice < cartItemPrice.length; indexPrice++) {
-        priceTotal += cartItemPrice[indexPrice].price;
+        priceTotal += parseFloat(cartItemPrice[indexPrice].price);
       }
       return (
         <div className='cartSummaryContainer main'>
