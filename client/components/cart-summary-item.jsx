@@ -1,11 +1,8 @@
 import React from 'react';
 
 class CartSummaryItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    const product = this.props.product;
+    const product = this.props.element;
     return (
       <div className='main col m-4' style={{ 'maxWidth': '540px' }}>
         <div className='row'>
