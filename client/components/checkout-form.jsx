@@ -52,34 +52,33 @@ class CheckoutForm extends React.Component {
       priceTotal += parseFloat(cartItemPrice[indexPrice].price);
     }
     return (
-      <div className='checkoutForm Container main'>
+      <div className='checkoutForm container main col-6'>
         <div>
           <div>
             <h3>Checkout</h3>
-            <br />
             Order Total: ${(priceTotal / 100).toFixed(2)}
           </div>
         </div>
+        <br />
         <div>
-          <div>
+          <div className='mb-3' >
             Name
             <br />
-            <input value={this.state.name} onChange={this.handleNameInput} type="text" placeholder='Name' />
+            <input value={this.state.name} onChange={this.handleNameInput} type="text" placeholder='Name' className='form-control' />
           </div>
-          <div>
+          <div className='mb-3' >
             Credit Card
             <br />
-            <input value={this.state.creditCard} onChange={this.handleCreditCardInput} type="text" placeholder='Credit Card #' />
+            <input value={this.state.creditCard} onChange={this.handleCreditCardInput} type="text" placeholder='Credit Card #' className='form-control' />
           </div>
-          <div>
+          <div className='mb-3' >
             Shipping Address
             <br />
-            <textarea value={this.state.shippingAddress} onChange={this.handleShippingAddressInput} name="" id="" cols="30" rows="10" placeholder='Street Address, City, State, Zipcode'></textarea>
+            <textarea value={this.state.shippingAddress} onChange={this.handleShippingAddressInput} name="" id="" cols="30" rows="10" placeholder='Street Address, City, State, Zipcode' className='form-control'></textarea>
           </div>
-          <div>
-            <button onClick={this.sendBackToCatalog} >Continue Shopping</button>
-            <br />
-            <button onClick={this.handlePlaceOrder} >Place Order</button>
+          <div className='mb-3' >
+            <span onClick={this.sendBackToCatalog} className='float-left' >&#60; Continue Shopping</span>
+            <button onClick={this.handlePlaceOrder} className='float-right' >Place Order</button>
           </div>
         </div>
       </div>
